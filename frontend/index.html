@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Task Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Smart Task Analyzer</h1>
+
+    <label>Sorting Strategy:</label>
+    <select id="strategy">
+        <option value="smart">Smart Balance</option>
+        <option value="fast">Fastest Wins</option>
+        <option value="impact">High Impact</option>
+        <option value="deadline">Deadline Driven</option>
+    </select>
+
+    <div class="input-section">
+        <h2>Add Task</h2>
+
+        <input id="title" type="text" placeholder="Task Title">
+        <input id="due" type="date">
+        <input id="hours" type="number" step="0.1" placeholder="Estimated Hours">
+        <input id="importance" type="number" placeholder="Importance 1-10">
+        <input id="deps" type="text" placeholder="Dependencies (comma separated IDs)">
+
+        <button onclick="addTask()">Add Task</button>
+
+        <h3>Bulk JSON Input</h3>
+
+        <textarea id="bulk" placeholder='[
+  { "id": "t1", "title": "Fix login bug", "due_date": "2025-11-30", "estimated_hours": 2, "importance": 8, "dependencies": [] },
+  { "id": "t2", "title": "Write report", "due_date": "2025-11-28", "estimated_hours": 4, "importance": 7, "dependencies": ["t1"] }
+]'></textarea>
+
+        <button onclick="loadExample()">Load Example JSON</button>
+
+        <button onclick="loadBulk()">Load Bulk</button>
+        <button onclick="analyze()">Analyze Tasks</button>
+    </div>
+
+    <div class="output-section">
+        <h2>Analysis Results</h2>
+        <div id="results"></div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
